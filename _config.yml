@@ -16,11 +16,17 @@
 title: Cosmo's Blog
 email: tristan.sterin@ens-lyon.fr
 description: > # this means to ignore newlines until "baseurl:"
-  Thoughts about computer sciences, mathematics, music and other.
+  Thoughts about Computer Sciences, Mathematics, Music and Other.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username:
 github_username:  tcosmo
+
+# Disqus Comments
+disqus:
+    # Leave shortname blank to disable comments site-wide.
+    # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
+    shortname: tcosmo
 
 # Build settings
 markdown: kramdown
