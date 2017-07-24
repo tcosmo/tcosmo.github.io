@@ -1,0 +1,22 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$content-width:    1000px !default;
+@import "minima";
+
+.imgright { float: right; margin-left: 10px; }
+.imgcap img {
+  border: 1px solid #999;
+  max-width: 100%;
+}
+.imgcap {
+  color: #555;
+  font-size: 14px;
+  text-align: center;
+}
+
+.svgdiv {
+  width: 100%;
+  text-align: center;
+}
