@@ -1,0 +1,3 @@
+http://www.scholarpedia.org/article/Kohonen_network
+http://www.ai-junkie.com/ann/som/som1.html
+http://web.archive.org/web/20130806112155/http://www.generation5.org/content/2004/aiSomPic.asp
