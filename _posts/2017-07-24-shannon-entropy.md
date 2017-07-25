@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Shannon's Entropy: A Matter of Surprise"
+date:   2017-07-26 00:35:37 +0200
 excerpt: "Some intuition about Shannon's Entropy."
 visible: 0
 comments: true
