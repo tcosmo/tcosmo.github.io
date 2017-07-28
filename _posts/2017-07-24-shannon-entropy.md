@@ -15,7 +15,6 @@ which interpreted it in terms of **lack of information**. This post aims at pres
 of view on entropy. 
 
 
-
 Entropy is at the root of Shannon's [Information Theory][it]. You might never have heard of Information Theory but you use it every day!! Indeed, among others: 
 
 

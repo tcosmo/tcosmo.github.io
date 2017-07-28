@@ -7,8 +7,10 @@ date: 2017-07-27 17:46:31 +0200
 comments: false
 ---
 
-## Introduction
+* TOC
+{:toc}
 
+## Introduction
 Self-Organizing Maps (**SOM**), or [Kohonen Networks][kohonen] ([\[1\]](#ref)), is a method for unsupervised clustering and visualization introduced in the 80' by computer scientist Teuvo 
 Kohonen.
 
@@ -91,7 +93,7 @@ it's feature vectors in order to match this data. Furthermore, we want it to gro
 originally nearby in the **d**-dimensional space. This will be done by spreading information in **neighbourhoods**.
 
 <br/>
-#### Finding the BMU
+#### Finding the Best Matching Unit
 At each time step t of the training, we are going to present to the SOM a randomly chosen input vector of our data. Then,
 we find the cell having the closest (norm L2 speaking) feature vector to that input vector. We call this cell the Best Matching Unit (**BMU**).
 
@@ -299,7 +301,7 @@ def sigma(self, t):
 
 
 <br/>
-#### How to initialize, how to stop ?
+### How to start, how to stop ?
 
 Two things we have left behind are the begining and the ending of the training procedure. 
 For the moment we start with a full zero SOM and our `train` method is an infinite loop.
@@ -340,6 +342,7 @@ def train(self,data,L0,lam,sigma0,initializer=np.random.rand):
         self.update_som(bmu,data[i_data],t)
 ```
 
+<br/>
 #### Stopping
 
 We choose to stop the process when $\sigma(t) < 1$, that is when updates only concern BMUs and no 
@@ -372,6 +375,43 @@ def train(self,data,L0,lam,sigma0,initializer=np.random.rand):
         bmu = self.find_bmu(data[i_data])
         self.update_som(bmu,data[i_data],t)
 ```
+
+<br/>
+### Assessing the quality of learning and choosing hyperparameters
+
+We have several hyperparameters to our model: $L_0$, $\lambda$, $\sigma_0$ and the way 
+to initialize the SOM. Each instantiation of these parameters will lead to a different model.
+In order to choose them we need a criterion to assess the quality of learning.
+This criterion can really depend on the task we are solving with the SOM.
+However, a general approach is to look at the **quantization error**.
+
+It is being defined as the mean of the distances between each input vector and it's BMU's feature:
+
+```python
+%%add_to SOM
+def quant_err(self):
+    """ 
+        Computes the quantization error of the SOM.
+        It uses the data fed at last training.
+    """
+    bmu_dists = []
+    for input_vector in self.data:
+        bmu = self.find_bmu(input_vector)
+        bmu_feat = self.som[bmu]
+        bmu_dists.append(np.linalg.norm(input_vector-bmu_feat))
+    return np.array(bmu_dists).mean()
+```
+
+To compute this error we have internalized the dataset in the SOM class in`self.data` at training time.
+
+**In practice.** It is very common to set the initial neighbourhood radius, $\sigma_0$, to half the size of the SOM. The 
+$\lambda$ parameter controls the duration of the learning process as well as the decaying speed of other parameters. 
+Values between $10$ and $10^3$ are often a good fit. Finally you should try different orders of magnitude for the $L_0$ paramater, 
+$1 \leq L_0 \leq 10$ is often fine. 
+
+<br/>
+## Having fun with SOMs!!!
+
 
 <a name="ref"></a>
 ## References
