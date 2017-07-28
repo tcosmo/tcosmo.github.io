@@ -67,10 +67,17 @@ class SOM(object):
         self.som = np.zeros((h,w,dim_feat))
 ```
 
-**Note on the code.** We construct the code iteratively, what you see are the cells of this [notebook].
-We use the [jdc][jdc] `%%add_to` magic command in order to construct the SOM class step by step. When a function is 
-on multiple cells it means it has been changed from one to the other.
-The whole final code is to be found [HERE].
+<br/>
+
+**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook].
+We use the [jdc][jdc] `%%add_to` (see [\[4\]](#ref)) magic command in order to construct the SOM class step by step. If you're not familiar with notebooks
+just consider each of the blocks commencing by `%%add_to SOM` as updates we do on the class `SOM` methods.
+
+The entire final code is to be found [HERE].
+
+When a function appears on several blocks such as the `__init__` function like [here](#b1) or [here](#b2) it means it has been updated from one block to the other.
+Otherwise function calls always refer to the most recent definition of it.
+
 
 
 <br/>
@@ -132,6 +139,7 @@ With $$L_0$$ the initial learning rate and $$\lambda$$ a time scaling constant.
 
 Let implements these new ideas:
 
+<a name="b1"></a>
 ```python
 %%add_to SOM
 def __init__(self,h,w,dim_feat):
@@ -203,7 +211,7 @@ It leads to the following formulation for $N(\delta,t)$:
 $$ N(\delta,t) = e^{-\frac{\delta^2}{2\sigma(t)^2}}$$
 
 Which is a spatial *Gaussian decay* scaled by radius factor $\sigma(t)$.
-For the reasons we just mentionned, we want $\sigma(t)$ to get smaller over time so that the "influence area" of the BMU shrinks over time.
+For the reasons we just mentionned, we want $\sigma(t)$ to get smaller over time so that the "influence area" of the BMU shrinks.
 We'll do that in the exact same way as equation $\ref{eq:L}$. It gives:
 
 $$ \sigma(t) = \sigma_0 * e^{-\frac{t}{\lambda}}$$
@@ -216,6 +224,7 @@ Thus we can use equation $\ref{eq:non_bmu}$ as a unique update rule for all cell
 
 Let implements all that:
 
+<a name="b2"></a>
 ```python
 %%add_to SOM
 def __init__(self,h,w,dim_feat):
@@ -288,6 +297,15 @@ def sigma(self, t):
     return self.sigma0*np.exp(-t/self.lam) 
 ```
 
+
+<br/>
+#### How to initialize, how to stop ?
+
+Two things we have left behind are the begining and the ending of the training procedure. 
+For the moment we start with a full zero SOM and our `train` method is an infinite loop.
+
+TODOTODO :)z)oz)àz)à
+
 <a name="ref"></a>
 ## References
 [kohonen]:http://www.scholarpedia.org/article/Kohonen_network
@@ -298,4 +316,5 @@ def sigma(self, t):
 
 \[1\]: http://www.scholarpedia.org/article/Kohonen_network      
 \[2\]: http://cis.legacy.ics.tkk.fi/research/som-bibl/vol1_4.pdf      
-\[3\]: http://www.ai-junkie.com/ann/som/som1.html     
+\[3\]: http://www.ai-junkie.com/ann/som/som1.html   
+\[4\]: https://github.com/alexhagen/jdc   
