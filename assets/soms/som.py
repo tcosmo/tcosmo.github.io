@@ -53,7 +53,7 @@ class som:
         self.L0 = L0
         self.lam = lam
 
-        self.init(rand_f)
+        #self.init(rand_f)
         
         inter = []
         if stock_inter:

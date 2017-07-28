@@ -214,7 +214,7 @@ Which is a spatial *Gaussian decay* scaled by radius factor $\sigma(t)$.
 For the reasons we just mentionned, we want $\sigma(t)$ to get smaller over time so that the "influence area" of the BMU shrinks.
 We'll do that in the exact same way as equation $\ref{eq:L}$. It gives:
 
-$$ \sigma(t) = \sigma_0 * e^{-\frac{t}{\lambda}}$$
+$$ \sigma(t) = \sigma_0 * e^{-\frac{t}{\lambda}}\label{eq:sigma}$$
 
 We use the same time scaling $\lambda$ parameter for both $L$ and $\sigma$.
 
@@ -304,7 +304,74 @@ def sigma(self, t):
 Two things we have left behind are the begining and the ending of the training procedure. 
 For the moment we start with a full zero SOM and our `train` method is an infinite loop.
 
-TODOTODO :)z)oz)àz)à
+As often in machine learning, these two stages of the process are foremost a matter of choice.
+
+#### Initialization
+Intuitively it is in our interest to have diversity in our initial SOM so that BMU's are strong matches and form clusters early.
+Initialization is a very important part of the SOM process and there's plenty of options:
+
+- Initialize randomly: uniformly, Gaussian or in any other way. Efficiency will highly depends on our data's distribution.
+- Initialize by sampling: if we have a lot of data compared to the number of cells we can pick some of it randomly to be our initial feature vectors.
+
+Given all these possibilities we are going to leave the choice to the code's user, implementing a default uniform random initialization in $\[0,1\]^d$.
+In practice we provide the possibility to specify an `initializer(h,w,dim_feat)` function that returns the initial **(h,w,d)** SOM tensor:
+
+```python
+%%add_to SOM
+def train(self,data,L0,lam,sigma0,initializer=np.random.rand):
+    """ 
+        Training procedure for a SOM.
+        data: a N*d matrix, N the number of examples, 
+              d the same as dim_feat=self.shape[2].
+        L0,lam,sigma0: training parameters.
+        initializer: a function taking h,w and dim_feat (*self.shape) as 
+                     parameters and returning an initial (h,w,dim_feat) tensor.
+    """
+    self.L0 = L0
+    self.lam = lam
+    self.sigma0 = sigma0
+    
+    self.som = initializer(*self.shape)
+    
+    for t in itertools.count():
+        i_data =  np.random.choice(range(len(data)))
+        
+        bmu = self.find_bmu(data[i_data])
+        self.update_som(bmu,data[i_data],t)
+```
+
+#### Stopping
+
+We choose to stop the process when $\sigma(t) < 1$, that is when updates only concern BMUs and no 
+more significative information spreads on the SOM. Notice that with this criterion, given equation $\ref{eq:sigma}$, we can 
+predict the total training time only with the $\lambda$ and $\sigma_0$ parameters. This gives:
+
+```python
+%%add_to SOM
+def train(self,data,L0,lam,sigma0,initializer=np.random.rand):
+    """ 
+        Training procedure for a SOM.
+        data: a N*d matrix, N the number of examples, 
+              d the same as dim_feat=self.shape[2].
+        L0,lam,sigma0: training parameters.
+        initializer: a function taking h,w and dim_feat (*self.shape) as 
+                     parameters and returning an initial (h,w,dim_feat) tensor.
+    """
+    self.L0 = L0
+    self.lam = lam
+    self.sigma0 = sigma0
+    
+    self.som = initializer(*self.shape)
+    
+    for t in itertools.count():
+        if self.sigma(t) < 1.0:
+            break
+
+        i_data =  np.random.choice(range(len(data)))
+        
+        bmu = self.find_bmu(data[i_data])
+        self.update_som(bmu,data[i_data],t)
+```
 
 <a name="ref"></a>
 ## References
