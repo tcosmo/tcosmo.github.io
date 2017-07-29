@@ -19,7 +19,7 @@ In this post we are going to present the basics of SOM model and build a minimal
 <center>
 <div class="imgcap">
     <video width="50%" controls>
-      <source type="video/mp4" src="/assets/soms/square.mp4">
+      <source type="video/mp4" src="/assets/soms/video/square.mp4">
       Your browser does not support the video tag.
     </video>
     <div class="thecap">A SOM trained on square data</div>
@@ -39,7 +39,7 @@ We refer to them by assigning them coordinates, here top down in the spirit of `
 
 <div class="imgcap">
     <div>
-        <img width="45%" src="/assets/soms/point_lattice.png" alt="point lattice"/>
+        <img width="45%" src="/assets/soms/images/point_lattice.png" alt="point lattice"/>
     </div>
     <div class="thecap">A point lattice, support of a (5,6)-shaped SOM</div>
 </div>
@@ -71,11 +71,11 @@ class SOM(object):
 
 <br/>
 
-**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook].
+**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook][som_construction].
 We use the [jdc][jdc] `%%add_to` (see [\[4\]](#ref)) magic command in order to construct the SOM class step by step. If you're not familiar with notebooks
 just consider each of the blocks commencing by `%%add_to SOM` as updates we do on the class `SOM` methods.
 
-The entire final code is to be found [HERE].
+The entire final code is to be found [here][som_code].
 
 When a function appears on several blocks such as the `__init__` function like [here](#b1) or [here](#b2) it means it has been updated from one block to the other.
 Otherwise function calls always refer to the most recent definition of it.
@@ -91,6 +91,15 @@ We are going to **train** them!!
 The idea of a SOM is to feed it with **d** dimensional data and let it update 
 it's feature vectors in order to match this data. Furthermore, we want it to group nearby on the lattice data which are 
 originally nearby in the **d**-dimensional space. This will be done by spreading information in **neighbourhoods**.
+This neighbourhood approach concentrate similar data in **clusters** around close cells on the SOM.
+
+Furthermore, with a SOM we can **visualize** on a 2D lattice data potentially lying in a very high dimension space. That's why 
+it can be seen as a **dimensionality reduction** technique. 
+
+All of this being **unsupervised** as we give our data to the model without additional information.
+
+The best way to have an intuitive understanding of these aspects of SOMs is to code one.
+Let's go!!
 
 <br/>
 #### Finding the Best Matching Unit
@@ -301,7 +310,7 @@ def sigma(self, t):
 
 
 <br/>
-### How to start, how to stop ?
+### How to start, how to stop them ?
 
 Two things we have left behind are the begining and the ending of the training procedure. 
 For the moment we start with a full zero SOM and our `train` method is an infinite loop.
@@ -407,10 +416,114 @@ To compute this error we have internalized the dataset in the SOM class in`self.
 **In practice.** It is very common to set the initial neighbourhood radius, $\sigma_0$, to half the size of the SOM. The 
 $\lambda$ parameter controls the duration of the learning process as well as the decaying speed of other parameters. 
 Values between $10$ and $10^3$ are often a good fit. Finally you should try different orders of magnitude for the $L_0$ paramater, 
-$1 \leq L_0 \leq 10$ is often fine. 
+$0.5 \leq L_0 \leq 10$ is often fine. 
+
+The whole code of this part is [here][som_code]. It has a few extra features that are usefull for visualization purpose. 
+They are detailed in the following part.
 
 <br/>
 ## Having fun with SOMs!!!
+
+All of these visualization come from this [notebook][som_viz].
+
+### 2D feature vectors
+
+Having 2D feature vectors in a SOM, that is, having a **(\*,\*,2)** SOM, isn't an example of dimensionalty reduction.
+However it's very nice to visualizing how the SOM actually organizes itself. In that sense it's quite meta. We do not use a SOM 
+to visualize data, we use data to visualize a SOM.
+
+The underlying idea is quite simple: we are going to fed the SOM with shapes and see how it responds.
+
+#### Inputing a square
+
+In order to input a square we simply generate uniformly random data in $\[0,1\]^2$:
+
+```python
+square_data = np.random.rand(5000,2)
+```
+
+We slightly modify `SOM.train` in order to save intermediates soms for us to make a little movie of the training.
+For the movie to last a bit more we change the stopping condition from `sigma(t) < 1.0` to `sigma(t) < 0.5`.
+We also add a prompt on stdout in order to know the total number of iterations.
+
+We train a **(20,20,2)** SOM on that task:
+
+```python
+%%time
+som_square = SOM(20,20,2)
+frames_square = []
+som_square.train(square_data,L0=0.8,lam=1e2,sigma0=10,frames=frames_square)
+```
+
+The `%%time` magic command gives us running time information. We get:
+
+<pre>
+final t: 300
+CPU times: user 2.91 s, sys: 12.4 ms, total: 2.93 s
+Wall time: 2.95 s
+</pre>
+
+Let's look at the quantization error:
+
+```python
+%%time
+print("quantization error:", som_square.quant_err())
+```
+
+We get:
+
+<pre>
+quantization error: 0.0432528457322
+CPU times: user 10.3 s, sys: 282 ms, total: 10.6 s
+Wall time: 10.3 s
+</pre>
+
+The quantization error seems low! Running time info shows us that it's not a very efficient task to perform, at least 
+in the way we implemented it.
+
+Thanks to `frames_square` we use plotting routines implemented in the [notebook][som_viz] in order to get the movie of the learning.
+
+
+We get:
+
+<center>
+<div class="imgcap">
+    <video width="50%" controls>
+      <source type="video/mp4" src="/assets/soms/video/square2.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">Our square-trained SOM's feature vectors at each step of the learning process</div>
+</div>
+</center>
+
+<br/>
+Notice that it was taken from a different learning process than the introductory video.
+
+The first frame shows the random initialization of our SOM. We can see that the SOM somehow converges to the square shape. As expected, because of our loose stopping condition, there's almost no changes anymore at the end of the video.
+
+Intuitively it's very much likely that it grows in the direction of "brand new" examples. Indeed, sometimes we see it largely moving a corner in one direction. It should be because at that step an example in that area was fed and, as our learning rate is almost $1$, the corresponding BMU quickly moves towards it.
+
+Furthermore, what's really impressive with SOMs is that the original "topology" of the SOM, here the *point lattice*, is preserved:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/top.png" alt="topology"/>
+    </div>
+    <div class="thecap">ID of each feature vector on the SOM point lattice</div>
+</div>
+
+<br/>
+This huge image plots our feature vectors at the end of the training and adds on each of them the "ID" of the corresponding 
+cell on the SOM's point lattice. If a cell has coordinates `(y,x)` on the lattice the ID is $20y+x$. 
+We see that here, the `(0,0)` cell corresponds to the right top corner of the square.
+
+It's very much as if the SOM was a piece of cloth physically matching the points it has been fed.
+
+
+### Colors
+### Real world application
+
+## What's next ?
 
 
 <a name="ref"></a>
