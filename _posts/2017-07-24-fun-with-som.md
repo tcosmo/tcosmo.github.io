@@ -11,10 +11,10 @@ comments: false
 {:toc}
 
 ## Introduction
-Self-Organizing Maps (**SOM**), or [Kohonen Networks][kohonen] ([\[1\]](#ref)), is a method for unsupervised clustering and visualization introduced in the 80' by computer scientist Teuvo 
-Kohonen.
+Self-Organizing Maps (**SOM**), or [Kohonen Networks][kohonen] ([\[1\]](#ref)), is an unsupervised learning method that can be applied  to a wide range of problems such as: data visualization, dimensionality reduction or clustering. 
+It was introduced in the 80' by computer scientist Teuvo Kohonen as a type of neural network ([\[Kohonen 82\]][kohonen82],[\[Kohonen 90\]][kohonen90]).
 
-In this post we are going to present the basics of SOM model and build a minimal python implementation based on `numpy`. It leads to visualizations such as:
+In this post we are going to present the basics of the SOM model and build a minimal python implementation based on `numpy`. It leads to visualizations such as:
 
 <center>
 <div class="imgcap">
@@ -30,6 +30,7 @@ In this post we are going to present the basics of SOM model and build a minimal
 There is a huge litterature on SOMs (see [\[2\]](#ref)), theoretical and applied, this post only aims at having fun with this model over a tiny implementation.
 The approach is very much inspired by this [post][aijunkie] ([\[3\]](#ref)).
 
+We first introduce the maths of the model and then present concrete examples to get more familiar with it.
 <br/>
 ## What's a SOM ?
 
@@ -432,7 +433,10 @@ Having 2D feature vectors in a SOM, that is, having a **(\*,\*,2)** SOM, isn't a
 However it's very nice to visualizing how the SOM actually organizes itself. In that sense it's quite meta. We do not use a SOM 
 to visualize data, we use data to visualize a SOM.
 
-The underlying idea is quite simple: we are going to fed the SOM with shapes and see how it responds.
+The underlying idea is quite simple: we are going to fed the SOM with shapes and see how it responds to it.
+
+Please note that we have used the `(y,x)` convention to refer to the coordinates of the SOM's cells, however we'll 
+use the `(x,y)` convention to interpret the content of their 2D feature vector.
 
 #### Inputing a square
 
@@ -519,9 +523,229 @@ We see that here, the `(0,0)` cell corresponds to the right top corner of the sq
 
 It's very much as if the SOM was a piece of cloth physically matching the points it has been fed.
 
+<br/>
+#### Inputing a circle
+
+Let's challenge our 2D SOM. We saw that we retrieved the *point lattice* structure at the end of training. 
+Intuitively it was a good fit because our squared input data was more or less easily representable with this structure.
+Now, what if we fed the SOM with data that has nothing to do with a square ? For instance, the rim of a circle.
+
+```python
+#Reference: https://stackoverflow.com/questions/8487893/generate-all-the-points-on-the-circumference-of-a-circle
+def PointsInCircum(r,n=5000):
+    return np.array([[math.cos(2*np.pi/n*x)*r+0.5,math.sin(2*np.pi/n*x)*r+0.5] for x in range(0,n+1)])
+
+circle_data = PointsInCircum(0.5)
+```
+
+It gives, for instance, the following set of input points:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/circle.png" alt="points on the circumference of a circle"/>
+    </div>
+    <div class="thecap">Input points on the circumference of a circle</div>
+</div>
+<br/>
+Let's train the SOM with the same parameters:
+
+```python
+
+    som_circle = SOM(20,20,2)
+    frames_circle = []
+    som_circle.train(circle_data,L0=0.8,lam=1e2,sigma0=10,frames=frames_circle)
+```
+
+It gives this final set of feature vectors:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/final_circle.png" alt="trained SOM on circle"/>
+    </div>
+    <div class="thecap">Feature vectors of the SOM after training</div>
+</div>
+<br/>
+The SOM "imitated" the circle as it could!!
+Here's the whole training video:
+
+<center>
+<div class="imgcap">
+    <video width="50%" controls>
+      <source type="video/mp4" src="/assets/soms/video/circle.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">SOM training on circumference circle data</div>
+</div>
+</center>
+
+<br/>
+And, again, the SOM's *point lattice* topology was somehow preserved:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/circle_top.png" alt="topology with circle data"/>
+    </div>
+    <div class="thecap">ID of each feature vector on the SOM point lattice with circle data</div>
+</div>
+<br/>
+
+Therefore, whereas it seems impossible for the SOM to match the exact circumference of a circle, it fits it 
+by expanding like a disc. Neat...
+
+It even looks better than our square that was supposed to be a really good fit for the *point lattice*. 
+However let's take into account that we had data from inside the square during the training. Thus not all steps were informational 
+in terms of shape because when an input data point already was inside the SOM area it would change almost nothing.
+It's quite certain that redoing the square training but only with points on the border of the square would lead to 
+"more visual" results.
+
+Conversly, feeding input data points from all over a disc may lead to weird results.
 
 ### Colors
-### Real world application
+
+We used 2D feature vectors in order to visualize the training of our SOM. In the same spirit, there's a type 
+of 3D features that can be visualized: colors.
+
+However our approach is going to be a bit different. While we had a lot of data in the previous example we are going 
+to fed the SOM with only 3 colors. We'll then plot the SOM with the colors on it which is straightforward when using 
+the `plt.imshow` `matplotlib` routine.
+
+We first generates our random colors:
+
+```python
+color_data = np.random.rand(3,3)
+```
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/random_colors.png" alt="3 random colors"/>
+    </div>
+    <div class="thecap">Our dataset: 3 random colors</div>
+</div>
+<br/>
+
+Then train the SOM:
+
+```python
+som_color = SOM(40,40,3)
+frames_color = []
+som_color.train(color_data,L0=0.8,lam=1e2,sigma0=20,frames=frames_color)
+```
+
+At the end of the learning we get:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/final_colors.png" alt="SOM trained on random colors"/>
+    </div>
+    <div class="thecap">Trained SOM on 3 random colors</div>
+</div>
+<br/>
+
+It looks very much like a Voronoï diagram. Three regions have been created, one for each color.
+
+Here's the video of the training:
+
+<center>
+<div class="imgcap">
+    <video width="50%" controls>
+      <source type="video/mp4" src="/assets/soms/video/colors.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">A SOM trained on 3 random colors</div>
+</div>
+</center>
+<br/>
+
+In that example, the `sigma(t) < 0.5` condition and the $\lambda = 10^2$ we chose have made 
+the learning quite long whereas the SOM stabilizes early (around 0.25s over 2.27m on the video).
+
+### Classification
+#### Training
+
+Let's move to a more practical example: classification. 
+We are going to use the 4D data of the `sklearn` `iris` dataset.
+This dataset describes the features of 150 iris flowers. There's three types of flowers, 
+labelled from 0 to 2, and we have 50 examples per class.
+
+```python
+iris_data = sklearn.datasets.load_iris()
+```
+Feature vectors are stocked in `iris_data['data']` and there corresponding targets
+in `iris_data['target']`.
+
+You can get plenty of info concerning this dataset by outputting `iris_data['DESCR']`.
+
+We cut this dataset into a train and a test set, keeping 75% of the examples per class in the train set:
+```python
+train_percent_per_class = 0.75
+train_0 = np.random.choice(range(50),int(50*train_percent_per_class),replace=False)
+train_1 = np.random.choice(range(50),int(50*train_percent_per_class),replace=False)
+train_2 = np.random.choice(range(50),int(50*train_percent_per_class),replace=False)
+
+indices_train = np.append(train_0,np.append(50+train_1,100+train_1))
+indices_test = list(set(range(150))-set(indices_train))
+```
+
+Then we feed the train set to an empirically chosen **(6,6,4)** SOM.
+
+```python
+som_iris = SOM(6,6,4)
+som_iris.train(iris_data['data'][indices_train],L0=0.8,lam=1e2,sigma0=5)
+```
+
+And finally, we plot the *majority matrix* after training:
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/iris_maj.png" alt="majority matrix on the iris dataset"/>
+    </div>
+    <div class="thecap">Majority matrix on the iris dataset</div>
+</div>
+<br/>
+
+This *majority matrix* is built by first grouping all our data per bmu: we associate to each cell 
+the input vectors for which it's the bmu. rThen we compute the most frequent target associated to each cell. 
+On the image, 0 means that there are no input vectors associated to the cell and classes 
+0,1,2 are respectively 1,2,3.
+
+It's looks quite nice, we have 3 distinct zones, one for each target. The SOM has performed 
+an unsupervised clustering of our data!
+
+However the *majority* information is not very informational alone. Indeed it could hide 
+mixed cells, with more than one target. We're not sure yet how trustable is our SOM.
+
+That's why we plot an *entropy matrix*. It consists in the *entropy* of each cell target's distribution.
+
+<div class="imgcap">
+    <div>
+        <img  src="/assets/soms/images/iris_ent.png" alt="entropy matrix on the iris dataset"/>
+    </div>
+    <div class="thecap">Entropy matrix on the iris dataset</div>
+</div>
+<br/>
+
+If you're not familiar with entropy (a post is coming on that subject!) here's how to interpret it:
+- A value close to 0 means that the target's distribution is *pure*. There's mainly one unique target in it, 
+which is what we want.
+- A value close to 1 means that the distribution is not *pure*, it's *mixed*. The least pure distribution 
+being one with the same number of elements of each target: you cannot trust the majority winner, it 
+has been chosen at random.
+
+Here it looks really good! Indeed, almost all cells are 100% sure of their associated target. It's also 
+quite nice that mixed cells are located on the border of two clusters. 
+
+As retraining or reshaping the SOM also leads to mixed cells, they might reflect the [Bayesian error] of the dataset.
+
+### Testing
+
+Now, if we want to classify new data, we simply feed it to the SOM and output the majority target of its BMU.
+The entropy matrix tells us how close to randomness is our answer depending on the BMU.
+
+
+TODOTODO:
+Find points satisfying set of distance constraints 
+
+
 
 ## What's next ?
 
@@ -532,7 +756,16 @@ It's very much as if the SOM was a piece of cloth physically matching the points
 [bibl]:http://cis.legacy.ics.tkk.fi/research/som-bibl/vol1_4.pdf
 [aijunkie]: http://www.ai-junkie.com/ann/som/som1.html
 
+[kohonen82]:/assets/soms/doc/kohonen1982.pdf
+[kohonen90]:http://sci2s.ugr.es/keel/pdf/algorithm/articulo/1990-Kohonen-PIEEE.pdf
+
 [jdc]: https://github.com/alexhagen/jdc
+
+### Articles
+[\[Kohonen 82\]][kohonen82]    
+[\[Kohonen 90\]][kohonen90] 
+
+### Websites
 
 \[1\]: http://www.scholarpedia.org/article/Kohonen_network      
 \[2\]: http://cis.legacy.ics.tkk.fi/research/som-bibl/vol1_4.pdf      

@@ -41,6 +41,8 @@ class SOM(object):
         
         self.data = []
 
+        self.hit_score = np.zeros((h,w))
+
     def train(self,data,L0,lam,sigma0,initializer=np.random.rand,frames=None):
         """ 
             Training procedure for a SOM.
@@ -71,6 +73,8 @@ class SOM(object):
             i_data =  np.random.choice(range(len(data)))
             
             bmu = self.find_bmu(data[i_data])
+            self.hit_score[bmu] += 1
+            
             self.update_som(bmu,data[i_data],t)
 
     def quant_err(self):
