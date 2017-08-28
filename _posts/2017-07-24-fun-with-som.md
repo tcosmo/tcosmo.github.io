@@ -2,9 +2,9 @@
 layout: post
 title:  "Having Fun with Self-Organizing Maps"
 excerpt: "Implementing SOMs in Python."
-visible: 0
+visible: 1
 date: 2017-07-27 17:46:31 +0200
-comments: false
+comments: true
 ---
 
 * TOC
