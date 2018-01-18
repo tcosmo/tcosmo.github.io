@@ -89,7 +89,7 @@ $W^3:$ 6, 6, 6, <span style="color:red">6</span>
 </center> <br/>
 
 
-Which is consistent with the fact that the underlying formula I chose to generate this sequence was:     
+Which is consistent with the fact that the underlying formula we chose to generate this sequence was:     
 <center>
     <br/>
 $ U_n = n^3 - 4n^2 + 13$
@@ -197,6 +197,8 @@ For instance $W^0_n = ntan(n)$.
 <br/>
 </center>
 <!-- back to polynomes -->
+<!-- disclaimer order of magnitudes float error ? -->
+<!-- cellular automaton, symmetrized rule -->
 ## Back to primes: from order to chaos ?
 Let's try something weird on our primes. Let's take: $$ W^0_n = p_{p_n} $$, the sequence of primes indexed by primes. 
 In order to have enough data, we extend $p_n$ to be all the primes below $10^5$. It gives:
