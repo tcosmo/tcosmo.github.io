@@ -156,4 +156,30 @@ In this pertubation spirit let's try something even harder: we similarly add ran
 </div>
 <br/>
 </center>
-Again, these shapes.
+Again, these shapes.<br/>
+Ok so for which other sequence should we have these shapes ?
+## Taking $nln(n)$
+The theorem of primes number claims that $(p_n) \sim nln(n)$ so it would be natural to see this kind of behaviors with $W^0_n = nln(n)$.   
+It gives:
+<center>
+<div class="imgcap">
+    <video width="70%" controls>
+      <source type="video/mp4" src="/assets/primes/videos/nln.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">Iterated differentiations of $W^0_n = nln(n)$</div>
+</div>
+<br/>
+</center>
+To stay with integers only, what happens with $W^0_n = \text{int}(nln(n))$ ? The following:
+<center>
+<div class="imgcap">
+    <video width="70%" controls>
+      <source type="video/mp4" src="/assets/primes/videos/nlnent.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">Iterated differentiations of $W^0_n = \text{int}(nln(n))$</div>
+</div>
+<br/>
+</center>
+The behavior seems really more geometric at least for earlier derivatives (low $k$).
