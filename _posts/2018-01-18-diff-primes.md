@@ -155,5 +155,5 @@ In this pertubation spirit let's try something even harder : we similarly add ra
     <div class="thecap">Iterated differentiations of unsorted primes below $10^4$ with random pertubations</div>
 </div>
 <br/>
-Again, these shapes.
 </center>
+Again, these shapes.
