@@ -112,7 +112,7 @@ Why not doing the same, that is taking $W^0 = (p_n)$ and see what happens ? Howe
 
 <center>
 <div class="imgcap">
-    <video width="50%" controls>
+    <video width="70%" controls>
       <source type="video/mp4" src="/assets/primes/videos/primes.mp4">
       Your browser does not support the video tag.
     </video>
