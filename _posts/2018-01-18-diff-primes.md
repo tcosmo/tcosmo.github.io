@@ -129,7 +129,7 @@ We found very little literature on the subject, please **feel free to add some i
 # Experiments
 ## Pertubing primes
 The first question that came to our mind after seeing the video shown in introduction was: is this phenomenon characteristic of prime numbers ?    
-Without any experiments we can already say : **no**. Because translating primes by a constant, for instance $p'_n=p_n+53$, won't perturbate the differentations. However, this pertubation is quite straightforward and not very harmful on the structure of primes. Let's pertubate them quite a lot.
+Without any experiments we can already say: **no**. Because translating primes by a constant, for instance $p'_n=p_n+53$, won't perturbate the differentations. However, this pertubation is quite straightforward and not very harmful on the structure of primes. Let's pertubate them quite a lot.
 We add to each prime below $10^4$ a different random number between $-1000$ and $1000$ and sort the obtained sequence. We take this as our $W^0$. Here's what we obtain:
 <center>
 <div class="imgcap">
@@ -145,7 +145,7 @@ Which is a quite similar behavior!
 <br/>
 Ok so, this fancy shapes are certainly not specific to primes.
 <br/>
-In this pertubation spirit let's try something even harder : we similarly add random numbers to each primes but **do not sort** the sequence after this operation. That is that $W^0$ is not increasing at all but has random fluctuations. Here's what we get:
+In this pertubation spirit let's try something even harder: we similarly add random numbers to each primes but **do not sort** the sequence after this operation. That is that $W^0$ is not increasing at all and has random fluctuations. Here's what we get:
 <center>
 <div class="imgcap">
     <video width="70%" controls>
