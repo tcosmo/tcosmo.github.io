@@ -133,7 +133,7 @@ Without any experiments we can already say : **no**. Because translating primes 
 We add to each prime below $10^4$ a different random number between $-1000$ and $1000$ and sort the obtained sequence. We take this as our $W^0$. Here's what we obtain:
 <center>
 <div class="imgcap">
-    <video width="50%" controls>
+    <video width="70%" controls>
       <source type="video/mp4" src="/assets/primes/videos/primes2.mp4">
       Your browser does not support the video tag.
     </video>
@@ -148,7 +148,7 @@ Ok so, this fancy shapes are certainly not specific to primes.
 In this pertubation spirit let's try something even harder : we similarly add random numbers to each primes but **do not sort** the sequence after this operation. That is that $W^0$ is not increasing at all but has random fluctuations. Here's what we get:
 <center>
 <div class="imgcap">
-    <video width="50%" controls>
+    <video width="70%" controls>
       <source type="video/mp4" src="/assets/primes/videos/primes3.mp4">
       Your browser does not support the video tag.
     </video>
