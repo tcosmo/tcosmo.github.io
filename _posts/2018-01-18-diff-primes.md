@@ -183,3 +183,32 @@ To stay with integers only, what happens with $W^0_n = \text{int}(nln(n))$ ? The
 <br/>
 </center>
 The behavior seems really more geometric at least for earlier derivatives (low $k$).
+## Taking $ntan(n)$
+We thought of $nln(n)$ because it was somehow related to primes. What if we take something that does not look especially related ?
+For instance $W^0_n = ntan(n)$.
+<center>
+<div class="imgcap">
+    <video width="70%" controls>
+      <source type="video/mp4" src="/assets/primes/videos/ntan.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">Iterated differentiations of $W^0_n = ntan(n)$</div>
+</div>
+<br/>
+</center>
+<!-- back to polynomes -->
+## Back to primes: from order to chaos ?
+Let's try something weird on our primes. Let's take: $$ W^0_n = p_{p_n} $$, the sequence of primes indexed by primes. 
+In order to have enough data, we extend $p_n$ to be all the primes below $10^5$. It gives:
+<center>
+<div class="imgcap">
+    <video width="70%" controls>
+      <source type="video/mp4" src="/assets/primes/videos/chaos.mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="thecap">Iterated differentiations of $W^0_n = p_{p_n}$</div>
+</div>
+<br/>
+</center>
+
+At the begining everything seems "as usual". But suddenly it breaks and it looks very chaotic...
