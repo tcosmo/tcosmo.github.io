@@ -12,7 +12,7 @@ comments: true
 
 ## Introduction
 <p>
-We play the following game. I give you a sequence of numbers and you should predict which is the next one.     
+We play the following game. You are given a finite sequence of numbers and the goal is to predict which is the next one.     
 For instance let's say we take:
 
 <center>
@@ -42,6 +42,7 @@ from there in order to decide the next term in the first line:
 
 Which is consistent with the first mathematical guess that was based on the recognition of the sequence of squares:   
 <center>
+<br/>
 $ U_n = n^2 $
 </center>
 <br/>
@@ -100,7 +101,7 @@ Which would have been way harder to recognize than $U_n=n^2$!
 <br/><br/>
 Ok so this method of differentation gave us a tool in order to predict the underlying structure of our example sequences.       
 When thinking of interger sequences there is one of which structure is very mysterious : **primes numbers**.     
-Why not doing the same and see what happens ? However, we're not going to do it by hand but program it. Here's what we obtain :
+Why not doing the same and see what happens ? However, we're not going to do it by hand but program it. Here's what we obtain:
 
 
 
@@ -110,7 +111,12 @@ Why not doing the same and see what happens ? However, we're not going to do it 
       <source type="video/mp4" src="/assets/primes/videos/primes.mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="thecap">Iterated differentiations of the primes</div>
+    <div class="thecap">Iterated differentiations of the primes below $10^4$</div>
 </div>
-</center>
 <br/>
+</center>
+ 
+This video was made by stacking for each $k$ the plot $n \mapsto W^{k}_{n}$.       <br/><br/>
+Isn't it **super strange** ?    <br/><br/>
+This blog post aims at compiling experiments around this iterated differentitation idea and at making a formal link with cellular automaton, we do not proove nor conjecture anything.    
+We found very little literature on the subject, please **feel free to add some in the comment sections if these plots ring you a bell**.
