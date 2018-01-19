@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "From Differentiating Primes to Infinite State Space Cellular Automaton"
+title:  "From Differentiating Primes to Infinite State Space Cellular Automata"
 excerpt: "What happens if you iterate the discrete differenciation operator to the sequence of primes numbers ?"
 visible: 1
 date: jeu. janv. 18 16:13:46 CET 2018
@@ -123,7 +123,7 @@ Why not doing the same, that is taking $W^0 = (p_n)$ and see what happens ? Howe
  
 This video was made by successively plotting for each $k$, $n \mapsto W^{k}_{n}$.       <br/><br/>
 Isn't it **super strange** ?    <br/><br/>
-This blog post aims at compiling experiments around this iterated differentitation idea and at making a formal link with cellular automaton, we do not proove nor conjecture anything.    
+This blog post aims at compiling experiments around this iterated differentitation idea and at making a formal link with cellular automata, we do not proove nor conjecture anything.    
 We found very little literature on the subject, please **feel free to add some in the comment sections if these plots ring you a bell**.
 <br/><br/>
 # Experiments
@@ -198,7 +198,7 @@ For instance $W^0_n = ntan(n)$.
 </center>
 <!-- back to polynomes -->
 <!-- disclaimer order of magnitudes float error ? -->
-<!-- cellular automaton, symmetrized rule -->
+<!-- cellular automata, symmetrized rule -->
 ## Back to primes: from order to chaos ?
 Let's try something weird on our primes. Let's take: $$ W^0_n = p_{p_n} $$, the sequence of primes indexed by primes. 
 In order to have enough data, we extend $p_n$ to be all the primes below $10^5$. It gives:
