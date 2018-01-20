@@ -10,6 +10,10 @@ comments: true
 * TOC
 {:toc}
 
+## Warning
+
+This post is still being written and is not finished yet. Also note that the experimental results about $nln(n)$ might be "false" in the sense that they could result of floating point approximation errors. All of the experimental results need to be checkproofed. You can find the base python code that generated them here: [Code](/assets/primes/diff_primes.py).
+
 ## Introduction
 <p>
 We play the following game. You are given a finite sequence of numbers and the goal is to predict which is the next one.     
