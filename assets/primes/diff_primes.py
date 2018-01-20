@@ -60,15 +60,18 @@ In order to generate the video you can use (in the directory where you saved you
 
 '''
 
-print("The frames are saved in the directory: "+directory)
+print("The frames are saved in the directory: "+directory+"\n")
 
 i = 0
+
 for curr_diff in iterate_diff(primes):
+	print("\rGenerating frame: {}/{}\r".format(i,len(primes)),end='')
+
 	plt.figure(figsize=(20,10))
 	plt.plot(curr_diff, 'o')
 	plt.savefig(directory+str(i))
 	plt.close()
+	
 	i += 1
 
-	if i%200 == 1:
-		print("{} frame(s) generated...".format(i))
+	
