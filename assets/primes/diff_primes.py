@@ -39,12 +39,20 @@ def diff_list(l):
 		diff.append(l[i]-l[i-1])
 	return diff
 
-def iterate_diff(l):
+def diff_list_sym(l):
+	diff = []
+	for i in range(1,len(l)-1):
+		diff.append(l[i+1]-l[i-1])
+	return diff
+
+rules = [(diff_list,"differentiation operator"),(diff_list_sym,"symmetrized differentiation operator")]
+
+def iterate_rule(l, rule):
 	curr_diff = l[:]
 
 	yield curr_diff
 	while len(curr_diff) != 1:
-		curr_diff = diff_list(curr_diff)
+		curr_diff = rule(curr_diff)
 		yield curr_diff
 
 print("\n\nThis code should crash when matplotlib cannot handle big numbers anymore (around 1e304).\n\n")
@@ -60,11 +68,13 @@ In order to generate the video you can use (in the directory where you saved you
 
 '''
 
+rule,name = rules[0]
+print("Using rule: "+name)
 print("The frames are saved in the directory: "+directory+"\n")
 
-i = 0
 
-for curr_diff in iterate_diff(primes):
+i = 0
+for curr_diff in iterate_rule(primes, rule):
 	print("\rGenerating frame: {}/{}\r".format(i,len(primes)),end='')
 
 	plt.figure(figsize=(20,10))
