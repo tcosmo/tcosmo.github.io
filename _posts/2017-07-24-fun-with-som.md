@@ -81,7 +81,7 @@ The entire final code is to be found [here][https://github.com/tcosmo/tcosmo.git
 When a function appears on several blocks such as the `__init__` function like [here](#b1) or [here](#b2) it means it has been updated from one block to the other.
 Otherwise function calls always refer to the most recent definition of it.
 
-
+**Disclaimer.** The code we present could be highly optimized, in particular in its way it interacts with numpy.
 
 <br/>
 ### What are we going to do with SOMs ?
@@ -659,7 +659,7 @@ Here's the video of the training:
 In that example, the `sigma(t) < 0.5` condition and the $\lambda = 10^2$ we chose have made 
 the learning quite long whereas the SOM stabilizes early (around 0.25s over 2.27m on the video).
 
-### Classification
+<!-- ### Classification
 #### Training
 
 Let's move to a more practical example: classification. 
@@ -743,11 +743,14 @@ The entropy matrix tells us how close to randomness is our answer depending on t
 
 
 TODOTODO:
-Find points satisfying set of distance constraints 
+Find points satisfying set of distance constraints  -->
 
 
 
 ## What's next ?
+
+If you want to see an even more concrete example of how to use SOMs checkout a project I did on how to recognize apparels on pictures [here][apparel].
+
 
 
 <a name="ref"></a>
@@ -758,6 +761,8 @@ Find points satisfying set of distance constraints
 
 [kohonen82]:/assets/soms/doc/kohonen1982.pdf
 [kohonen90]:http://sci2s.ugr.es/keel/pdf/algorithm/articulo/1990-Kohonen-PIEEE.pdf
+
+[apparel]: http://perso.ens-lyon.fr/tristan.sterin/reports/sterin_MSc_internship_DeepNeuralFeatures.pdf
 
 [jdc]: https://github.com/alexhagen/jdc
 
