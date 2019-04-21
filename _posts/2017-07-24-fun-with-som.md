@@ -72,11 +72,11 @@ class SOM(object):
 
 <br/>
 
-**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook](https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/SOM_construction.ipynb).
+**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook](/assets/soms/code/SOM_construction.ipynb).
 We use the [jdc][jdc] `%%add_to` (see [\[4\]](#ref)) magic command in order to construct the SOM class step by step. If you're not familiar with notebooks
 just consider each of the blocks commencing by `%%add_to SOM` as updates we do on the class `SOM` methods.
 
-The entire final code is to be found [here](https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/som.py).
+The entire final code is to be found [here](/assets/soms/code/som.py).
 
 When a function appears on several blocks such as the `__init__` function like [here](#b1) or [here](#b2) it means it has been updated from one block to the other.
 Otherwise function calls always refer to the most recent definition of it.
@@ -419,13 +419,13 @@ $\lambda$ parameter controls the duration of the learning process as well as the
 Values between $10$ and $10^3$ are often a good fit. Finally you should try different orders of magnitude for the $L_0$ paramater, 
 $0.5 \leq L_0 \leq 10$ is often fine. 
 
-The whole code of this part is [here](https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/som.py). It has a few extra features that are usefull for visualization purpose. 
+The whole code of this part is [here](/assets/soms/code/som.py). It has a few extra features that are usefull for visualization purpose. 
 They are detailed in the following part.
 
 <br/>
 ## Having fun with SOMs!!!
 
-All of these visualization come from this [notebook](https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/SOM_viz.ipynb).
+All of these visualization come from this [visualization notebook](/assets/soms/code/SOM_viz.ipynb).
 
 ### 2D feature vectors
 
@@ -769,6 +769,14 @@ If you want to see an even more concrete example of how to use SOMs checkout a p
 ### Articles
 [\[Kohonen 82\]][kohonen82]    
 [\[Kohonen 90\]][kohonen90] 
+
+### Code
+[SOM code](/assets/soms/code/som.py)
+[SOM notbook](/assets/soms/code/SOM_construction.ipynb)
+[SOM visualization](/assets/soms/code/SOM_viz.ipynb)
+
+### Report
+[\[Deep Neural Features\]][apparel]
 
 ### Websites
 
