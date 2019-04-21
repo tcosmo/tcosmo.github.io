@@ -771,9 +771,9 @@ If you want to see an even more concrete example of how to use SOMs checkout a p
 [\[Kohonen 90\]][kohonen90] 
 
 ### Code
-[SOM code](/assets/soms/code/som.py)
-[SOM notbook](/assets/soms/code/SOM_construction.ipynb)
-[SOM visualization](/assets/soms/code/SOM_viz.ipynb)
+[\[SOM code\]](/assets/soms/code/som.py)
+[\[SOM notbook\]](/assets/soms/code/SOM_construction.ipynb)
+[\[SOM visualization\]](/assets/soms/code/SOM_viz.ipynb)
 
 ### Report
 [\[Deep Neural Features\]][apparel]
