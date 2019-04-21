@@ -12,7 +12,7 @@ comments: true
 
 ## Warning
 
-This post is still being written and is not finished yet. Also note that the experimental results about $nln(n)$ might be "false" in the sense that they could result of floating point approximation errors. All of the experimental results need to be checkproofed. You can find the base python code that generated them here: [Code](/assets/primes/diff_primes.py).
+Note that all the the experimental results shown in this post might be biased by numerical errors. They all need to be checkproofed. You can find the base python code that generated them here: [Code](/assets/primes/diff_primes.py).
 
 ## Introduction
 <p>
