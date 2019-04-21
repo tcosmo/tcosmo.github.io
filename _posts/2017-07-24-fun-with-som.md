@@ -72,11 +72,11 @@ class SOM(object):
 
 <br/>
 
-**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook][som_construction].
+**Note on the code.** We construct the code iteratively, the blocks you see are the cells of this [notebook][https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/SOM_construction.ipynb].
 We use the [jdc][jdc] `%%add_to` (see [\[4\]](#ref)) magic command in order to construct the SOM class step by step. If you're not familiar with notebooks
 just consider each of the blocks commencing by `%%add_to SOM` as updates we do on the class `SOM` methods.
 
-The entire final code is to be found [here][som_code].
+The entire final code is to be found [here][https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/som.py].
 
 When a function appears on several blocks such as the `__init__` function like [here](#b1) or [here](#b2) it means it has been updated from one block to the other.
 Otherwise function calls always refer to the most recent definition of it.
@@ -419,13 +419,13 @@ $\lambda$ parameter controls the duration of the learning process as well as the
 Values between $10$ and $10^3$ are often a good fit. Finally you should try different orders of magnitude for the $L_0$ paramater, 
 $0.5 \leq L_0 \leq 10$ is often fine. 
 
-The whole code of this part is [here][som_code]. It has a few extra features that are usefull for visualization purpose. 
+The whole code of this part is [here][https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/som.py]. It has a few extra features that are usefull for visualization purpose. 
 They are detailed in the following part.
 
 <br/>
 ## Having fun with SOMs!!!
 
-All of these visualization come from this [notebook][som_viz].
+All of these visualization come from this [notebook][https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/SOM_viz.ipynb].
 
 ### 2D feature vectors
 
@@ -485,7 +485,7 @@ Wall time: 10.3 s
 The quantization error seems low! Running time info shows us that it's not a very efficient task to perform, at least 
 in the way we implemented it.
 
-Thanks to `frames_square` we use plotting routines implemented in the [notebook][som_viz] in order to get the movie of the learning.
+Thanks to `frames_square` we use plotting routines implemented in the [notebook][https://github.com/tcosmo/tcosmo.github.io/blob/master/assets/soms/code/SOM_viz.ipynb] in order to get the movie of the learning.
 
 
 We get:
