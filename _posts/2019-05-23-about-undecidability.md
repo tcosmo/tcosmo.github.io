@@ -30,7 +30,7 @@ To be a monoïd, $\mathcal{M}$ must verify the two following axioms:
 
 The first axiom specifies that parenthesis don't matter when you are composing elements with each others, $x\cdot(y\cdot z) = (x\cdot y )\cdot z = x\cdot y \cdot z$ while the second one justifies why $e$ is called "neutral": composing an element $x$ with $e$ wont affect $x$.
 
-The definition of monoïds is very abstract. As a consequence, loads of different objects are monoïds. For instance the natural numbers! Take $\mathbb{N}=\{0,1\dots,\}$ and use addition as the composition law and 0 to be the neutral element. Then you will satisfy both axiom 1 and 2:
+The definition of monoïds is very abstract. As a consequence, loads of different objects are monoïds. For instance, the set of natural numbers is a monoïd! Take $\mathbb{N}=\{0,1\dots,\}$ and use addition as the composition law and 0 to be the neutral element. Then you will satisfy both axiom 1 and 2:
 
 1. $\forall x,y,z \in \mathbb{N} \quad x+(y+z) = (x+y)+z = x + y + z$
 2. $\forall x \in \mathbb{N} \quad x + 0 = 0 + x = x$
@@ -45,7 +45,7 @@ Weirder objects are monoïds. Consider $\mathcal{A}$, the set of words you can m
 
 The composition operation becomes string concatenation : $\text{abba}\cdot \text{aab} = \text{abbaaab}$.
 
-This object $\mathcal{A}$ together with the law $\cdot$ meets all the requirement to be a monoïd, indeed, the neutral element is the empty word, for instance: $\text{aaab}\cdot \epsilon = \text{aaab}$ (concatenating with nothing does not change the string). However this object looks different from the first monoïd we saw, the set of natural numbers $\mathbb{N}$!
+This object $\mathcal{A}$ together with the law $\cdot$ meets all the requirement to be a monoïd, indeed, the neutral element is the empty word, for instance: $\text{aaab}\cdot \epsilon = \text{aaab}$ (concatenating with nothing does not change the string) and parenthesis don't matter while concatenating. However this object looks different from the first monoïd we saw, the set of natural numbers $\mathbb{N}$!
 
 In other words, the very minimal set of axioms that monoïds satisfy allow to construct a wide variety of different looking objects. This set of axiom has an important expressive power because it can shape such different objects.
 
@@ -61,22 +61,22 @@ The element $y$ is called the "inverse" of $x$.
 
 The question that arises is: "is this statement verified by all monoïds" ?
 
-The answer is immediately NO! Indeed, the two examples of monoïds we gave don't have that property:
+The answer is NO! Indeed, the two examples of monoïds we gave don't have that property:
 
 1. Take any strictly positive $x\in\mathbb{N}$, there is no element of $y\in\mathbb{N}$ such that $x+y=0$
 2. Take a non empty string like "aabaa", there is no string you can concatenate to it in order to get back to the empty string "\epsilon".
 
-However, some monoïds have the inverse property! For instance, in the set of negative and positive integers $\mathbb{Z}$ we have:
+However, some monoïds do have the "inverse property"! For instance, in the set of negative and positive integers $\mathbb{Z}$ we have:
 
 $$ \forall x \in \mathbb{Z} \quad x + (-x) = 0 $$
 
-Monoïds which have the inverse property are called [Groups](https://en.wikipedia.org/wiki/Group_(mathematics)).
+Monoïds which have the "inverse property" are called [Groups](https://en.wikipedia.org/wiki/Group_(mathematics)).
 
 What we just saw is that any group is a monoïd but not all monoïds are groups!
 
 For that reason, the sentence $ \forall x\, \exists y\,\, x\cdot y = y\cdot x = e$ is **undecidable** under the axioms of monoïds. The axioms of monoïds are not *strong enough* to enforce this property in all the objects that satisfy the monoïds axioms.
 
-Finally, keep in mind that in a given model of the axioms of monoïds (a model is an object satisfying the axioms), the inverse property is either true or false.
+Finally, keep in mind that in a given model of the axioms of monoïds (a model is an object satisfying the axioms), the "inverse property", as any property, is either true or false.
 
 # Wrapping Up
 
@@ -94,4 +94,4 @@ Gödel theorems deal with a specific set of axioms: the axioms of arithmetic, ca
 
 These theorems construct an undecidable property in the axioms of arithmetic. It was easy for us to outline an undecidable property when looking at monoïds but it is much more tricky when looking at arithmetic. More powerfully, Gödel incompletness theorems show that you will always be able to construct undecidable properties in systems of axioms which "embeds" arithmetic.
 
-In other word, if you have a system of axioms which allow you to do something as elementary as counting, you will be able to construct undecidable properties. 
+In other word, if you have a system of axioms which allows you to do something as elementary as counting, you will be able to construct undecidable properties with respect to this system of axioms. 
