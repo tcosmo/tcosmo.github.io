@@ -13,6 +13,6 @@ in
     buildInputs = [ jekyll_env bundler ruby ];
 
     shellHook = ''
-      exec ${jekyll_env}/bin/jekyll serve --watch
+      exec ${jekyll_env}/bin/jekyll serve --watch --port 4001
     '';
   }
