@@ -30,7 +30,7 @@ To be a monoïd, $\mathcal{M}$ must verify the two following axioms:
 
 The first axiom specifies that parenthesis don't matter when you are composing elements with each others, $x\cdot(y\cdot z) = (x\cdot y )\cdot z = x\cdot y \cdot z$ while the second one justifies why $e$ is called "neutral": composing an element $x$ with $e$ wont affect $x$.
 
-The definition of monoïd is very abstract. As a consequence, loads of different objects are monoïds. For instance the natural numbers! Take $\mathbb{N}=\{0,1\dots,\}$ and use addition as the composition law and 0 to be the neutral element. Then you will satisfy both axiom 1 and 2:
+The definition of monoïds is very abstract. As a consequence, loads of different objects are monoïds. For instance the natural numbers! Take $\mathbb{N}=\{0,1\dots,\}$ and use addition as the composition law and 0 to be the neutral element. Then you will satisfy both axiom 1 and 2:
 
 1. $\forall x,y,z \in \mathbb{N} \quad x+(y+z) = (x+y)+z = x + y + z$
 2. $\forall x \in \mathbb{N} \quad x + 0 = 0 + x = x$
