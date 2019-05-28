@@ -52,11 +52,6 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-analytics:
-  provider: "google-universal"
-  google:
-    tracking_id: "UA-140946726-1"
-
 theme: minima
 gems:
   - jekyll-feed
