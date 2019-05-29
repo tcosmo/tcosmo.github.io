@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Differentiating Primes"
-excerpt: "What happens if you iterate the discrete differenciation operator to the sequence of primes numbers ?"
+excerpt: "What happens if you iterate the discrete differenciation operator on the sequence of primes numbers ?"
 visible: 1
 date: jeu. janv. 18 16:13:46 CET 2018
 comments: true
