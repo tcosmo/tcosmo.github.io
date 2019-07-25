@@ -11,7 +11,7 @@ comments: true
 
 Free energy is a concept which seems to be central in statistical physics, thermodynamics, chemistry and physical biology. For instance, practical results such that [the law of mass action](https://en.wikipedia.org/wiki/Law_of_mass_action) can be derived from the principle of free energy minimization. 
 
-However, how to develop an intuition about the following textbook definition of free energy:
+However, how can we develop an intuition about the following textbook definition of free energy:
 
 $$ G = E - T S $$
 
