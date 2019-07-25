@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-Welcome on my blog :)!
+Welcome to my blog :)!

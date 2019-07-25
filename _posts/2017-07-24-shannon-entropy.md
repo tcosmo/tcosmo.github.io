@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Entropy from the Information Theory point of view"
+title:  "About Shannon's Entropy"
 date:   2019-04-21 19:05:37 +0100
-excerpt: "Some intuition about Shannon's Entropy."
+excerpt: "Some intuition on entropy from the Information Theory point of view."
 visible: 1
 comments: true
 ---

@@ -3,7 +3,18 @@
 ---
 
 $content-width:    1000px !default;
+
+$background-color: #343434; /* a dark, off-black for the bg */
+$text-color: #E8E8E8; /* an off-white for the text */
+$grey-color-light: #444444; /* for the border-top separators */
+$grey-color-dark: #C3C3C3; /* such as the site title in the header, visited */
+$brand-color: #e08a00;
+
 @import "minima";
+
+a:visited {
+    color: lighten($brand-color, 10%);
+}
 
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {
