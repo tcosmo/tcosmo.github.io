@@ -12,6 +12,7 @@ $brand-color: #fa9200;
 
 @import "minima";
 
+
 a {
     color: $brand-color;
 }
@@ -27,11 +28,10 @@ a:hover {
 
 .imgright { float: right; margin-left: 10px; }
 .imgcap img {
-  border: 1px solid #999;
   max-width: 100%;
 }
 .imgcap {
-  color: #555;
+  color: $text-color;
   font-size: 14px;
   text-align: center;
 }
@@ -43,4 +43,15 @@ a:hover {
 
 article {
   text-align: justify;
+}
+@import url(fruity.css);
+
+.highlighter-rouge .highlight {
+    background: #000000;
+    border: 0;
+}
+
+pre, code {
+    background: #000000;
+    border: 0;
 }
