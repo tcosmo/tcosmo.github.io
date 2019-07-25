@@ -63,7 +63,7 @@ As shown in Figure 2, this system can be in $N^2+N$ states which we call **micro
 <div>
 <img src="/assets/free_energy/world2.svg" style="width:70%">
 </div>
-<div class="thecap">Figure 2. The $N^2 + N$ microstates of the system and its two macrostates: bonded or not bonded.</div>
+<div class="thecap">Figure 2. The $N^2 + N$ microstates of the system and its two macrostates: bonded or not bonded. Here, $N=5$.</div>
 </div>
 <br/>
 
