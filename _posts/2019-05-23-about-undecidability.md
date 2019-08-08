@@ -25,15 +25,15 @@ Monoïds are objects containing elements which can interact with each others tha
 
 To be a monoïd, $\mathcal{M}$ must verify the two following axioms:
 
-1. $ \forall x,y,z \quad x\cdot(y\cdot z) = (x\cdot y )\cdot z $
-2. $ \forall x \quad x\cdot e = e\cdot x = x $
+1. $ \forall x\forall y \forall  z,\; x\cdot(y\cdot z) = (x\cdot y )\cdot z $
+2. $ \forall x, \; x\cdot e = e\cdot x = x $
 
 The first axiom specifies that parenthesis don't matter when you are composing elements with each others, $x\cdot(y\cdot z) = (x\cdot y )\cdot z = x\cdot y \cdot z$ while the second one justifies why $e$ is called "neutral": composing an element $x$ with $e$ wont affect $x$.
 
 The definition of monoïds is very abstract. As a consequence, loads of different objects are monoïds. For instance, the set of natural numbers is a monoïd! Take $\mathbb{N}=\{0,1\dots,\}$ and use addition as the composition law and 0 to be the neutral element. Then you will satisfy both axiom 1 and 2:
 
-1. $\forall x,y,z \in \mathbb{N} \quad x+(y+z) = (x+y)+z = x + y + z$
-2. $\forall x \in \mathbb{N} \quad x + 0 = 0 + x = x$
+1. $\forall x,y,z \in \mathbb{N},\; x+(y+z) = (x+y)+z = x + y + z$
+2. $\forall x \in \mathbb{N},\; x + 0 = 0 + x = x$
 
 Weirder objects are monoïds. Consider $\mathcal{A}$, the set of words you can make with the letters "a" and "b". You can make:
 
@@ -55,7 +55,7 @@ Undecidability will arise from the fact that some of these objects will have pro
 
 Let's consider the following statement, called the "inverse property":
 
-$$ \forall x\, \exists y\,\,\,\, x\cdot y = y\cdot x = e$$
+$$ \forall x\, \exists y,\; x\cdot y = y\cdot x = e$$
 
 The element $y$ is called the "inverse" of $x$.
 
@@ -68,7 +68,7 @@ The answer is NO! Indeed, the two examples of monoïds we gave don't have that p
 
 However, some monoïds do have the "inverse property"! For instance, in the set of negative and positive integers $\mathbb{Z}$ we have:
 
-$$ \forall x \in \mathbb{Z} \quad x + (-x) = 0 $$
+$$ \forall x \in \mathbb{Z},\; x + (-x) = 0 $$
 
 Monoïds which have the "inverse property" are called [Groups](https://en.wikipedia.org/wiki/Group_(mathematics)).
 
