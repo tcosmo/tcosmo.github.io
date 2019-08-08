@@ -129,7 +129,7 @@ And with $q_0 = N^2 p_0$ and $q_1 = N p_{N^2+1}$ the probabilities of the macros
 
 Note that we have made the implicit assumption that microstates with the same energy had the same probability (i.e. $p_1 = p_2 = \dots = p_{N^2}$ and $p_{N^2+1} = p_{N^2+2} = \dots = p_{N^2+N}$). This assumption will be confirmed later on with the calculus leading to Boltzmann distribution. As of right now, this assumption helps us writing a feasible optimization routine since we only have to optimize over $(q_0, q_1)$ and not the whole $(p_1,\ldots,p_N^2,p_{N^2+1},\ldots,p_{N^2+N})$.
 
-The following code optimizes $$ G(X,\nu) $$ in our grid world context for different threshold conditions. You can play with this code interactively in <a href="/assets/free_energy/FreeEnergyMinimization.ipynb">this notebook</a>.
+The following code optimizes $$ G(X,\nu) $$ in our grid world context for different threshold conditions. You can play with this code interactively in <a href="https://github.com/tcosmo/tcosmo.github.io/tree/master/assets/free_energy/FreeEnergyMinimization.ipynb">this notebook</a>.
 
 
 ```python
@@ -192,7 +192,7 @@ This code produces the following output:
 <br/>
 Figure 3 illustrates minimization of free energy depending on the threshold parameter. With this graph we realize the compromise made by free energy between energy and entropy. When the threshold is low, the energetic term wins and microstates with the lowest energy (i.e, bonded) are mainly favored ($q_{1} \simeq 1$). However, when the threshold gets very big, the entropic term wins and not bonded states get favored since they are much more frequent than bonded one: $N^2$ vs $N$. In that case, the system behaves like a biased coin where $q_0 \simeq \frac{N^2}{N^2 + N}$ and $q_1 \simeq \frac{N}{N^2 + N} $.
 
-In  <a href="/assets/free_energy/FreeEnergyMinimization.ipynb">the notebook</a>, you can experience the effect of other parameters on the overall result. You can for instance try modifying $E_{1}=E_{\text{bonded}}$ or $N$.
+In  <a href="https://github.com/tcosmo/tcosmo.github.io/tree/master/assets/free_energy/FreeEnergyMinimization.ipynb">the notebook</a>, you can experience the effect of other parameters on the overall result. You can for instance try modifying $E_{1}=E_{\text{bonded}}$ or $N$.
 
 For instance, if you take $N=10$ instead of $N=100$, the difference between $\frac{N^2}{N^2 + N}$ and $\frac{N}{N^2 + N}$ becomes less important hence the not bonded case is less favored with $\tau$ big:
 
