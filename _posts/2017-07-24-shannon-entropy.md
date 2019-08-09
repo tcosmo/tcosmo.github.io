@@ -204,7 +204,7 @@ We invite the curious reader to read an Information Theory course :) !
 
 Entropy is an important quantity in physics and chemistry, for instance in thermodynamic or statistical physics. So what is the link between this information theoretic point of view and physics?
 
-Ask a physicist!!! 
+Ask a physicist!!! (or look at our [post on Free Energy]({% post_url 2019-07-18-free-energy %}).. )
 
 <a name="ref"></a>
 ## References
