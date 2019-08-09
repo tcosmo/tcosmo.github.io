@@ -53,7 +53,7 @@ Finally, throughout the article, we'll illustrate this formalism on a concrete t
 </div>
 <br/>
 
-Our toy model of hybridization is as follows: we take two distinct particles (a circle and a square in Figure 1) living in a 1D, disrcete, world composed of $N$ cells. These two particles can freely move to any cell of the world, in particular they can both be on the same cell (Figure 1, first and second rows). When they are on the same cell these two particles can "hybridize", i.e. make a bound between themselves (Figure 1, third row).
+Our toy model of hybridization is as follows: we take two distinct particles (a circle and a square in Figure 1 and 2) living in a disrcete, one dimensional, world composed of $N$ cells. These two particles can freely move to any cell of the world, in particular they can both be on the same cell (Figure 1, first and second rows). When they are on the same cell these two particles can "hybridize", i.e. make a bond between themselves (Figure 1, third row).
 
 ### Micro and Macro States
 
