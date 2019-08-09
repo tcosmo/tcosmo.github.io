@@ -39,17 +39,17 @@ Thanks to this formulation we'll get some intuition on what minimizing $G$ means
 
 $$ p_i = \frac{1}{Z}e^{-\frac{E_i}{k_B T}}$$
 
-Finally, throughout the article, we'll illustrate this formalism on a concrete toy example of 1D hybridization of two particles.
+Finally, throughout the article, we'll illustrate this formalism on a concrete toy example of hybridization of two particles in a 1D-world.
 
 ## Toy Model of Hybridization
 
-### 1D Two Particles World
+### Two Particles 1D-World
 
 <div class="imgcap" style="border: 0px">
 <div>
 <img src="/assets/free_energy/world.svg">
 </div>
-<div class="thecap">Figure 1. Three of the $N^2 + N$ states of the 1D two particles world of size $N=5$.<br/> The two particles can possibly bound if they are on the same cell.</div>
+<div class="thecap">Figure 1. Three of the $N^2 + N$ states of the two particles  1D-world of size $N=5$.<br/> The two particles can possibly bound if they are on the same cell.</div>
 </div>
 <br/>
 
@@ -85,7 +85,7 @@ We are going to look at each of our microstate $S_i$ and state how *favorable* t
 This score is the **energy** of the microstate. By convention energies are numbers in $\mathbb{R}$ and the lowest is the score, the more favored is the state. A microstate with energy $E=1000$ will be less more favored than a microstate with energy $E=-1000$. Formally, we are going to construct an energetic valuation function $v:\Omega \to \mathbb{R}$ by defining $v(S_i)$ for $1 \leq i \leq N+N^2$. 
 
 
-In our 1D world, any microstate where the two particles are **bonded** will be considered as more favored -- i.e having a lower energy -- than any microstate where they are **not bonded**. Furthermore, in our model there is no reason to give a different energetic score to two microstates being in the same macrostate. Indeed, energetically speaking, nothing distinguishes microstates $1$ to $N^2$ (not bonded case) as well as nothing distinguishes microstates $N^2+1$ to $N^2+N$ (bonded case).
+In our 1D-world, any microstate where the two particles are **bonded** will be considered as more favored -- i.e having a lower energy -- than any microstate where they are **not bonded**. Furthermore, in our model there is no reason to give a different energetic score to two microstates being in the same macrostate. Indeed, energetically speaking, nothing distinguishes microstates $1$ to $N^2$ (not bonded case) as well as nothing distinguishes microstates $N^2+1$ to $N^2+N$ (bonded case).
 
 Hence we have:
 
@@ -117,7 +117,7 @@ The parameter $\tau$ allows us to linearly control the lack of predictability (o
 
 ## Experimental Solution to Free Energy Minimization
 
-In the case of our 1D grid world we can write some code in order to minimize $G(X,\nu)$. Free energy becomes:
+In the case of our 1D-world we can write some code in order to minimize $G(X,\nu)$. Free energy becomes:
 
 $$ G(X,\nu) = q_0E_0 + q_1E_1 - \tau H(X)$$
 
@@ -187,7 +187,7 @@ This code produces the following output:
     <div>
         <img width="80%" src="/assets/free_energy/graph.png" alt="free energy"/>
     </div>
-    <div class="thecap">Figure 3. Compromise between energy and entropy in the 1D grid world with $N=100$</div>
+    <div class="thecap">Figure 3. Compromise between energy and entropy in the 1D-world with $N=100$</div>
 </div>
 <br/>
 Figure 3 illustrates minimization of free energy depending on the threshold parameter. With this graph we realize the compromise made by free energy between energy and entropy. When the threshold is low, the energetic term wins and microstates with the lowest energy (i.e, bonded) are mainly favored ($q_{1} \simeq 1$). However, when the threshold gets very big, the entropic term wins and not bonded states get favored since they are much more frequent than bonded one: $N^2$ vs $N$. In that case, the system behaves like a biased coin where $q_0 \simeq \frac{N^2}{N^2 + N}$ and $q_1 \simeq \frac{N}{N^2 + N} $.
@@ -200,7 +200,7 @@ For instance, if you take $N=10$ instead of $N=100$, the difference between $\fr
     <div>
         <img width="80%" src="/assets/free_energy/graph2.png" alt="free energy"/>
     </div>
-    <div class="thecap">Figure 4. Compromise between energy and entropy in the 1D grid world N=$10$</div>
+    <div class="thecap">Figure 4. Compromise between energy and entropy in the 1D-world N=$10$</div>
 </div>
 <br/>
 
