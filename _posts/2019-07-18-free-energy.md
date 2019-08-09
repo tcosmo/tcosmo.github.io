@@ -11,7 +11,7 @@ comments: true
 
 Free energy is a concept which seems to be central in statistical physics, thermodynamics, chemistry and physical biology. More specifically, the idea that free energy is a quantity which systems naturally tend to **minimize** is very developed in those fields.
 
-However, how can we develop an intuition about the following textbook definition of free energy:
+However, how can we build an intuition about the following textbook definition of free energy:
 
 $$ G = E - T S $$
 
