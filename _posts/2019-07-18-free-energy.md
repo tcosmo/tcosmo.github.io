@@ -35,7 +35,7 @@ Where:
 
 We consciently drop the term of "temperature" for "threshold" because, in this mathematical model we don't deal with units and physical scales. 
 
-Thanks to this formulation we'll get some intuition on what minimizing $G$ means: finding the best compromise between stability (being in a low energy state) and "chaos" which is the natural ability of a system to explore all its possible states. With the theory of optimization we will be able to show that the probability distribution of $X$ which minimizes $G$ corresponds exactly to the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution). Hence, with this formalism, the principle of free energy minimization directly leads to the Boltzmann distribution and justifies why, in statistical physics, the probability for a system to be at a level of energy $E_i$ is given by:
+Thanks to this formulation we'll get some intuition on what minimizing $G$ means: finding the best compromise between stability (being in a low energy state) and "chaos" which is the natural ability of a system to explore all its possible states. With the theory of optimization we will be able to show that the probability distribution of $X$ which minimizes $G$ corresponds exactly to the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution). Indeed, in this formalism, the principle of free energy minimization directly leads to the Boltzmann distribution and justifies why, in statistical physics, the probability for a system to be at a level of energy $E_i$ is given by:
 
 $$ p_i = \frac{1}{Z}e^{-\frac{E_i}{k_B T}}$$
 
