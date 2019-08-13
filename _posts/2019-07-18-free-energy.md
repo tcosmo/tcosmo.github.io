@@ -33,7 +33,7 @@ Where:
 - $\tau$ is a non-negative parameter called the ''threshold''
 - $H(X)$ is the [Shannon entropy]({% post_url 2017-07-24-shannon-entropy %}) of $X$ (not to be mistaken with some enthalpy $H$)
 
-We consciently drop the term of "temperature" for "threshold" because, in this mathematical model we don't deal with units and physical scales. 
+We intentionally use the term “threshold” instead of the term "temperature" because, in this mathematical model we don't deal with units and physical scales. 
 
 Thanks to this formulation we'll get some intuition on what minimizing $G$ means: finding the best compromise between stability (being in a low energy state) and "chaos" which is the natural ability of a system to explore all its possible states. With the theory of optimization we will be able to show that the probability distribution of $X$ which minimizes $G$ corresponds exactly to the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution). Indeed, in this formalism, the principle of free energy minimization directly leads to the Boltzmann distribution and justifies why, in statistical physics, the probability for a system to be at a level of energy $E_i$ is given by:
 
@@ -49,7 +49,7 @@ Finally, throughout the article, we'll illustrate this formalism on a concrete t
 <div>
 <img src="/assets/free_energy/world.svg">
 </div>
-<div class="thecap">Figure 1. Three of the $N^2 + N$ states of the two particles  1D-world of size $N=5$.<br/> The two particles can possibly bound if they are on the same cell.</div>
+<div class="thecap">Figure 1. Three of the $N^2 + N$ states of the two particles  1D-world of size $N=5$.<br/> The two particles can possibly bind if they are on the same cell.</div>
 </div>
 <br/>
 
