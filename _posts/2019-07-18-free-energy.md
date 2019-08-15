@@ -63,11 +63,11 @@ As shown in Figure 2, this system can be in $N^2+N$ states which we call **micro
 <div>
 <img src="/assets/free_energy/world2.svg" style="width:70%">
 </div>
-<div class="thecap">Figure 2. The $N^2 + N$ microstates of the system and its two macrostates: bonded or not bonded. Here, $N=5$.</div>
+<div class="thecap">Figure 2. The $N^2 + N$ microstates of the system and its two macrostates: *bonded* or *not bonded*. Here, $N=5$.</div>
 </div>
 <br/>
 
-These $N^2 + N$ microstates can be grouped in two distincts **macrostates** according to whether or not there is a bond between the particles or not. Macrostates are collections of microstates sharing a common property. Here we have two macrostates: **bonded** and **not bonded**.
+These $N^2 + N$ microstates can be grouped in two distincts **macrostates** according to whether or not there is a bond between the particles or not. Macrostates are collections of microstates sharing a common property. Here we have two macrostates: *bonded* and *not bonded*.
 
 ### Our System as a Random Variable
 
@@ -85,7 +85,7 @@ We are going to look at each of our microstate $S_i$ and state how *favorable* t
 This score is the **energy** of the microstate. By convention energies are numbers in $\mathbb{R}$ and the lowest is the score, the more favored is the state. A microstate with energy $E=1000$ will be less more favored than a microstate with energy $E=-1000$. Formally, we are going to construct an energetic valuation function $v:\Omega \to \mathbb{R}$ by defining $v(S_i)$ for $1 \leq i \leq N+N^2$. 
 
 
-In our 1D-world, any microstate where the two particles are **bonded** will be considered as more favored -- i.e having a lower energy -- than any microstate where they are **not bonded**. Furthermore, in our model there is no reason to give a different energetic score to two microstates being in the same macrostate. Indeed, energetically speaking, nothing distinguishes microstates $1$ to $N^2$ (not bonded case) as well as nothing distinguishes microstates $N^2+1$ to $N^2+N$ (bonded case).
+In our 1D-world, any microstate where the two particles are *bonded* will be considered as more favored -- i.e having a lower energy -- than any microstate where they are *not bonded*. Furthermore, in our model there is no reason to give a different energetic score to two microstates being in the same macrostate. Indeed, energetically speaking, nothing distinguishes microstates $1$ to $N^2$ (*not bonded* case) as well as nothing distinguishes microstates $N^2+1$ to $N^2+N$ (*bonded* case).
 
 Hence we have:
 
@@ -97,7 +97,7 @@ In the following we take $E_{0} = 0$ as a reference energy. The value of $E_{1}$
 
 Our goal is to construct $p_X = (p_1, \ldots, p_{N^2 + N})$, the probability distribution over microstates: $p_i$ is the probability that the system is in microstate $S_i$. In order to get there we must describe what is a *good* (or a fair) distribution over the microstates space.
 
-For instance, would it be fair if $p_X$ was uniform, i.e all microstates are equally likely $p_i = \frac{1}{N^2 + N}$ ? No, because of the **energetic** argument. Indeed, microstates corresponding to the **bonded** macrostate are more favored by the system than **not bonded** microstates. Hence, our distribution $p_X$ must be biased in favor of the bonded microstates: $S_{N^2 + 1} \dots S_{N^2 + N}$.
+For instance, would it be fair if $p_X$ was uniform, i.e all microstates are equally likely $p_i = \frac{1}{N^2 + N}$ ? No, because of the **energetic** argument. Indeed, microstates corresponding to the *bonded* macrostate are more favored by the system than *not bonded* microstates. Hence, our distribution $p_X$ must be biased in favor of the microstates in the *bonded* macrostate: $S_{N^2 + 1} \dots S_{N^2 + N}$.
 
 Inversely, would it be fair if $p_X$ was concentrated over one particular microstate? For instance if we set $p_{N^2+1} = 1$? No, because of the **entropic** argument. The entropic argument accounts for the chaotic nature of microscopic systems: molecular agitation drives the system to explore its different possible configurations. Molecular agitation limits our ability to predict in which microstate the system is. This entropic effect, in physics, is proportional to the temperature. In our mathematical model, it will be proportional to the *threshold*.
 
@@ -113,7 +113,7 @@ With $\mathbb{E}[v(X)] = \sum_{i} v(S_i) p_i$, the weighted average energy, $\ta
 
 If we minimize $G(X,v)$, i.e. find the probability distribution $p_X$ which gives the smallest value of $G$, we achieve an interesting compromise. Indeed, we minimize the **weighted average energy** of the system while **maximizing** the corresponding entropy of the microstates distribution. Note that maximizing Shannon entropy matches the intuitive idea of the entropic argument since we maximize the **lack of predictability** of the random variable $X$ (see our [article]({% post_url 2017-07-24-shannon-entropy %})). The energetic argument is formalised by the idea of minimizing $\mathbb{E}[v(X)]$, the weighted average energy of our system.
 
-The parameter $\tau$ allows us to linearly control the lack of predictability (or chaos) of the system. For instance, if $\tau = 0$, there is no chaos. Minimizing free energy will correspond to deterministically set the system to the most favorable states. In physics, the threshold $\tau$, up to the normalization constant $k_{B}$, corresponds to temperature. Temperature linearly controls the molecular agitation of the system which determines the ability of the system to explore its state space.
+The parameter $\tau$ allows us to linearly control the lack of predictability (or chaos) of the system. If $\tau = 0$, there is no chaos. Minimizing free energy will correspond to deterministically set the system to one of the most favorable state (less energy state). If $\tau = +\infty$, the system microstate is totally unpredictable: minimizing free energy will lead to the uniform distribution on microstates and the system is so unstable that the energetic argument does not hold anymore. In physics, the threshold $\tau$, up to the normalization constant $k_{B}$, corresponds to temperature. Temperature linearly controls the molecular agitation of the system which determines the ability of the system to explore its state space.
 
 ## Experimental Solution to Free Energy Minimization
 
@@ -125,7 +125,7 @@ With:
 
  $$ H(X) = -( q_{0} \text{log}(\frac{q_0}{N^2}) + q_{1} \text{log}(\frac{q_{1}}{N})) $$
 
-And with $q_0 = N^2 p_0$ and $q_1 = N p_{N^2+1}$ the probabilities of the macrostates **bonded** and **not bonded** (recall that $(p_1,\ldots,p_N^2,p_{N^2+1},\ldots,p_{N^2+N})$ is the probability distribution over microstates and the probability distribution of the variable $X$).
+And with $q_0 = N^2 p_0$ and $q_1 = N p_{N^2+1}$ the probabilities of the macrostates *bonded* and *not bonded* (recall that $(p_1,\ldots,p_N^2,p_{N^2+1},\ldots,p_{N^2+N})$ is the probability distribution over microstates and the probability distribution of the variable $X$).
 
 Note that we have made the implicit assumption that microstates with the same energy had the same probability (i.e. $p_1 = p_2 = \dots = p_{N^2}$ and $p_{N^2+1} = p_{N^2+2} = \dots = p_{N^2+N}$). This assumption will be confirmed later on with the calculus leading to Boltzmann distribution. As of right now, this assumption helps us writing a feasible optimization routine since we only have to optimize over $(q_0, q_1)$ and not the whole $(p_1,\ldots,p_N^2,p_{N^2+1},\ldots,p_{N^2+N})$.
 
@@ -190,11 +190,11 @@ This code produces the following output:
     <div class="thecap">Figure 3. Compromise between energy and entropy in the 1D-world with $N=100$</div>
 </div>
 <br/>
-Figure 3 illustrates minimization of free energy depending on the threshold parameter. With this graph we realize the compromise made by free energy between energy and entropy. When the threshold is low, the energetic term wins and microstates with the lowest energy (i.e, bonded) are mainly favored ($q_{1} \simeq 1$). However, when the threshold gets very big, the entropic term wins and not bonded states get favored since they are much more frequent than bonded one: $N^2$ vs $N$. In that case, the system behaves like a biased coin where $q_0 \simeq \frac{N^2}{N^2 + N}$ and $q_1 \simeq \frac{N}{N^2 + N} $.
+Figure 3 illustrates minimization of free energy depending on the threshold parameter. With this graph we realize the compromise made by free energy between energy and entropy. When the threshold is low, the energetic term wins and microstates with the lowest energy (i.e, in the *bonded* macrostate) are mainly favored ($q_{1} \simeq 1$). However, when the threshold gets very big, the entropic term wins and the solution to the minimization problem is the uniform distribution on microstates. In that case, since there are more microstates in the macrostate *not bonded*, the system behaves like a biased coin where $q_0 \simeq \frac{N^2}{N^2 + N}$ and $q_1 \simeq \frac{N}{N^2 + N} $.
 
 In  <a href="https://github.com/tcosmo/tcosmo.github.io/tree/master/assets/free_energy/FreeEnergyMinimization.ipynb">the notebook</a>, you can experience the effect of other parameters on the overall result. You can for instance try modifying $E_{1}=E_{\text{bonded}}$ or $N$.
 
-For instance, if you take $N=10$ instead of $N=100$, the difference between $\frac{N^2}{N^2 + N}$ and $\frac{N}{N^2 + N}$ becomes less important hence the not bonded case is less favored with $\tau$ big:
+For instance, if you take $N=10$ instead of $N=100$, the difference between $\frac{N^2}{N^2 + N}$ and $\frac{N}{N^2 + N}$ becomes less important hence the *not bonded* case is less favored with $\tau$ big than when $N=100$:
 
 <div class="imgcap">
     <div>
@@ -218,7 +218,7 @@ With $Z=\sum_{i} e^{\nu(S_i)/\tau}$ a normalization factor also called *partitio
 
 Also, we can note that, as we assumed in the experimental section, microstates with same energies will have the same probabilities. 
 
-Finally, in the case of our grid world and according to Boltzmann distribution the probabilities of macrostates **bonded** and **not bonded** are given by:
+Finally, in the case of our grid world and according to Boltzmann distribution the probabilities of macrostates *bonded* and *not bonded* are given by:
 
 $$\begin{align*}
 q_0 &= \sum_{i=1}^{N^2}p_i = \frac{N^2}{Z}e^{-E_0/\tau}\\
@@ -232,7 +232,7 @@ The melting threshold $\tau^{\star}$, when $q_0=q_1=0.5$ is interesting because 
 
 $$ \frac{N^2}{Z}e^{-E_0/\tau^{\star}} = \frac{N}{Z}e^{-E_1/\tau^{\star}} \Leftrightarrow E_1 - E_0 = \tau^{\star}\text{log}(\frac{1}{N})$$
 
-In a physical system, the threshold $\tau$ is in fact $k_{B}T$. Thus, if  our toy model was physically meaningful for the hybridization of some particles and if we had an experimental way to determine the melting temperature $T^{\star}$, we could evaluate the energetics of the **bonded** state (assuming $E_0=0$ is a reference value) by:
+In a physical system, the threshold $\tau$ is in fact $k_{B}T$. Thus, if  our toy model was physically meaningful for the hybridization of some particles and if we had an experimental way to determine the melting temperature $T^{\star}$, we could evaluate the energetics of the *bonded* state (assuming $E_0=0$ is a reference value) by:
 
 $$ E_{\text{bonded}} = E_1 = k_{B}T^{\star}\text{log}(\frac{1}{N}) $$
 
