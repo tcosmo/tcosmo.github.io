@@ -5,4 +5,4 @@ permalink: /about/
 ---
 
 Welcome to my blog :)!     
-You can also checkout my [https://dna.hamilton.ie/tsterin/](website).
+You can also checkout my [website](https://dna.hamilton.ie/tsterin/).
